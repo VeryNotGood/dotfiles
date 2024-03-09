@@ -15,7 +15,7 @@ set $wallpaper ~/wallpapers/wallpapers/ign_astronaut.png
 exec wal -R
 include ~/.cache/wal/colors-sway
 
-
+#test
 
 bar {
 	swaybar_command waybar
