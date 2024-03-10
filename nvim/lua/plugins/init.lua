@@ -1,11 +1,17 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
--- List of all default plugins & their definitions
+-- List of all default plugins & their definition
 local default_plugins = {
-
+  {
   "nvim-lua/plenary.nvim",
-
+    lazy = false,
+  },
+  {
+  "fatih/vim-go",
+    lazy = false,
+  },
   {
     "NvChad/base46",
+    lazy = false,
     branch = "v2.0",
     build = function()
       require("base46").load_all_highlights()
@@ -20,6 +26,7 @@ local default_plugins = {
 
   {
     "NvChad/nvterm",
+    lazy = false,
     init = function()
       require("core.utils").load_mappings "nvterm"
     end,
@@ -31,6 +38,7 @@ local default_plugins = {
 
   {
     "NvChad/nvim-colorizer.lua",
+    lazy = false,
     event = "User FilePost",
     config = function(_, opts)
       require("colorizer").setup(opts)
@@ -44,6 +52,7 @@ local default_plugins = {
 
   {
     "nvim-tree/nvim-web-devicons",
+        lazy = false,
     opts = function()
       return { override = require "nvchad.icons.devicons" }
     end,
@@ -84,6 +93,7 @@ local default_plugins = {
   -- git stuff
   {
     "lewis6991/gitsigns.nvim",
+    lazy = false,
     event = "User FilePost",
     opts = function()
       return require("plugins.configs.others").gitsigns
@@ -118,6 +128,7 @@ local default_plugins = {
 
   {
     "neovim/nvim-lspconfig",
+    lazy = false,
     event = "User FilePost",
     config = function()
       require "plugins.configs.lspconfig"
@@ -128,6 +139,7 @@ local default_plugins = {
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
+    lazy = false,
     dependencies = {
       {
         -- snippet plugin
@@ -142,6 +154,7 @@ local default_plugins = {
       -- autopairing of (){}[] etc
       {
         "windwp/nvim-autopairs",
+    lazy = false,
         opts = {
           fast_wrap = {},
           disable_filetype = { "TelescopePrompt", "vim" },
@@ -164,6 +177,7 @@ local default_plugins = {
         "hrsh7th/cmp-path",
       },
     },
+    lazy = false,
     opts = function()
       return require "plugins.configs.cmp"
     end,
@@ -193,6 +207,7 @@ local default_plugins = {
   -- file managing , picker etc
   {
     "nvim-tree/nvim-tree.lua",
+    lazy = false,
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     init = function()
       require("core.utils").load_mappings "nvimtree"
@@ -208,6 +223,7 @@ local default_plugins = {
 
   {
     "nvim-telescope/telescope.nvim",
+    lazy = false,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     cmd = "Telescope",
     init = function()
@@ -231,6 +247,7 @@ local default_plugins = {
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
+    lazy = false,
     keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
     init = function()
       require("core.utils").load_mappings "whichkey"
@@ -244,6 +261,8 @@ local default_plugins = {
 }
 
 local config = require("core.utils").load_config()
+
+
 
 if #config.plugins > 0 then
   table.insert(default_plugins, { import = config.plugins })
