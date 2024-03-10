@@ -76,7 +76,7 @@ exec --no-startup-id redshift -c ~/.config/redshift/redshift.conf
 # Input configuration
 input * {
     xkb_layout us
-    xkb_options ctrl:nocaps
+    xkb_options caps:escape
 	   }
 
 # Output configuration

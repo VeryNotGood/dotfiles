@@ -7,6 +7,7 @@ M.general = {
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
+    ["<C-c>"] = {"<ESC>"},
 
     -- navigate within insert mode
     ["<C-h>"] = { "<Left>", "Move left" },
@@ -16,6 +17,8 @@ M.general = {
   },
 
   n = {
+    ["<leader>k"] = {"<cmd>lnext<CR>zz"},
+    ["<leader>j"] = {"<cmd>lprev<CR>zz"},
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
@@ -27,6 +30,9 @@ M.general = {
     ["<C-u>"] = {"<C-u>zz"},
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
+    ["Q"] = {"<nop>"},
+    ["<C-f>"] = {"<cmd> silent !tmux neww tmux-sessionizer<CR>"},
+    ["<leader>s"] = {":%s/"},
 
     -- Copy all
     --["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
@@ -34,7 +40,15 @@ M.general = {
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
+
     ["J"] = {"mzJ`z"},
+
+    ["n"] = {"nzzzv"},
+    ["N"] = {"Nzzzv"},
+    ["<leader>y"] = {"\"+y"},
+    ["<leader>Y"] = {"\"+y"},
+
+
 
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -146,6 +160,12 @@ M.lspconfig = {
         vim.lsp.buf.definition()
       end,
       "LSP definition",
+    },
+    ["<leader>f"] = {
+      function()
+        vim.lsp.buf.format()
+      end,
+      "LSP format",
     },
 
     ["K"] = {
