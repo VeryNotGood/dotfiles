@@ -34,6 +34,7 @@ M.general = {
     ["<C-f>"] = {"<cmd> silent !tmux neww tmux-sessionizer<CR>"},
     ["<leader>s"] = {":%s/"},
 
+
     -- Copy all
     --["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 

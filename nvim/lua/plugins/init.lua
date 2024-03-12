@@ -1,6 +1,13 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definition
 local default_plugins = {
+  { "tpope/vim-fugitive",
+    lazy = false,
+  },
+  {
+    "preservim/tagbar",
+    lazy = false,
+  },
   {
   "nvim-lua/plenary.nvim",
     lazy = false,
