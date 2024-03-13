@@ -17,6 +17,7 @@ M.general = {
   },
 
   n = {
+    ["<leader>tt"] = {":TagbarToggle<CR>"},
     ["<leader>k"] = {"<cmd>lnext<CR>zz"},
     ["<leader>j"] = {"<cmd>lprev<CR>zz"},
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },

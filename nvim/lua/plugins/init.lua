@@ -1,6 +1,55 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definition
 local default_plugins = {
+  {
+    "ggandor/leap.nvim",
+    lazy = false,
+    enabled = true,
+    keys = {
+      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+    { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+    { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+  },
+  config = function(_, opts)
+    local leap = require("leap")
+    for k, v in pairs(opts) do
+      leap.opts[k] = v
+    end
+    leap.add_default_mappings(true)
+    vim.keymap.del({ "x", "o" }, "x")
+    vim.keymap.del({ "x", "o" }, "X")
+  end,
+  },
+  { "tpope/vim-repeat",
+    lazy = false,
+  },
+  { "tpope/vim-surround",
+    lazy = false
+  },
+  { "junegunn/vim-peekaboo",
+    lazy = false
+  },
+  { "romainl/vim-cool",
+    lazy = false
+  },
+  { "wfxr/minimap.vim",
+    lazy = false,
+    "wfxr/code-minimap",
+    lazy = false
+  },
+  --{ "f-person/git-blame",
+  --  lazy = false
+  --},
+  { "mattn/emmet-vim",
+    lazy = false
+  },
+  
+ --- { "neoclide/coc.nvim",
+ ---   lazy = false
+  ---},
+  { "ludovicchabant/vim-gutentags",
+    lazy = false,
+  },
   { "tpope/vim-fugitive",
     lazy = false,
   },
@@ -182,6 +231,7 @@ local default_plugins = {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
       },
     },
     lazy = false,
