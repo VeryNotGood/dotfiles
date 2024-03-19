@@ -81,7 +81,7 @@ M.general = {
     ["<"] = { "<gv", "Indent line" },
     [">"] = { ">gv", "Indent line" },
     ["J"] = {":m '>+1<CR>gv=gv"},
-    ["K"] = {":m '>+1<CR>gv=gv"},
+    ["K"] = {":m '>-2<CR>gv=gv"},
   },
 
   x = {

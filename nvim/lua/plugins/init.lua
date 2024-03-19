@@ -1,6 +1,13 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definition
 local default_plugins = {
+  { "MunifTanjim/eslint.nvim",
+    lazy = "false",
+  },
+  {
+    "mfussenegger/nvim-dap",
+    lazy = false,
+  },
   {
     "ggandor/leap.nvim",
     lazy = false,
@@ -181,6 +188,9 @@ local default_plugins = {
       vim.g.mason_binaries_list = opts.ensure_installed
     end,
   },
+  { "jose-elias-alvarez/null-ls.nvim",
+    lazy = false,
+  },
 
   {
     "neovim/nvim-lspconfig",
@@ -281,7 +291,9 @@ local default_plugins = {
   {
     "nvim-telescope/telescope.nvim",
     lazy = false,
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = { "nvim-treesitter/nvim-treesitter",
+                      "sharkdp/fd",
+    },
     cmd = "Telescope",
     init = function()
       require("core.utils").load_mappings "telescope"
