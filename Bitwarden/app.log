@@ -1,0 +1,38 @@
+[2024-03-15 16:19:21.742] [info]  No state version found, assuming empty state.
+[2024-03-15 16:19:22.934] [info]  State version: 26
+[2024-03-15 16:19:56.375] [error] {
+  response: {
+    error: 'invalid_grant',
+    error_description: 'invalid_username_or_password',
+    ErrorModel: {
+      Message: 'Username or password is incorrect. Try again.',
+      Object: 'error'
+    }
+  },
+  message: 'Username or password is incorrect. Try again.',
+  captchaRequired: false,
+  statusCode: 400
+}
+[2024-03-15 16:19:56.381] [error] Received API exception: [object Object]
+[2024-03-15 16:20:15.112] [error] {
+  response: {
+    error: 'invalid_grant',
+    error_description: 'invalid_username_or_password',
+    ErrorModel: {
+      Message: 'Username or password is incorrect. Try again.',
+      Object: 'error'
+    }
+  },
+  message: 'Username or password is incorrect. Try again.',
+  captchaRequired: false,
+  statusCode: 400
+}
+[2024-03-15 16:20:15.119] [error] Received API exception: [object Object]
+[2024-03-15 16:20:55.243] [info]  Error: The name is not activatable
+[2024-03-15 16:20:55.429] [info]  Error: The name is not activatable
+[2024-03-15 16:20:55.429] [info]  Error: The name is not activatable
+[2024-03-15 16:20:55.445] [info]  Error: The name is not activatable
+[2024-03-15 16:20:55.450] [info]  Error: The name is not activatable
+[2024-03-15 16:20:55.472] [error] Error: Cannot start a HubConnection that is not in the 'Disconnected' state.
+[2024-03-15 16:20:55.702] [info]  Finished search indexing
+[2024-03-15 16:20:56.641] [info]  Finished search indexing
