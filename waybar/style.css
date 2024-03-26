@@ -7,13 +7,13 @@
 }
 
 window#waybar {
-    background: transparent;
-    color: white;
+    background: rgba(34,35,46,.95);
+    color: rgba(255,255,255,.75);
 }
 
 #window {
     font-weight: bold;
-    font-family: "Ubuntu";
+    font-family: "Ubuntu Nerd Font";
 }
 /*
 #workspaces {
@@ -29,8 +29,8 @@ window#waybar {
 }
 
 #workspaces button.focused {
-    color: #c9545d;
-    border-top: 2px solid #c9545d;
+    color: #c9654a;
+    border-top: 2px solid #c9654a;
 }
 
 #mode {
@@ -65,7 +65,7 @@ window#waybar {
 }
 
 #battery.warning:not(.charging) {
-    color: white;
+    color: red;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

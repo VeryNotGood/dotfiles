@@ -1,6 +1,12 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definition
 local default_plugins = {
+  { "ianding1/leetcode.vim",
+    lazy = false,
+  },
+  { "ThePrimeagen/harpoon",
+    lazy = false,
+  },
   { "kdheepak/lazygit.nvim",
     lazy = false,
   },

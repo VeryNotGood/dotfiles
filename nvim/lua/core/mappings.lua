@@ -17,6 +17,17 @@ M.general = {
   },
 
   n = {
+    ["<leader>0"] = {":Telescope harpoon marks<CR>"},
+    ["<leader>pp"] = {":lua require('harpoon.mark').add_file()<CR>"},
+    ["<leader>."] = {":lua require('harpoon.ui').nav_next()<CR>"},
+    ["<leader>,"] = {":lua require('harpoon.ui').nav_prev()<CR>"},
+    ["<leader>mm"] = {":lua require('harpoon.ui').toggle_quick_menu()<CR>"},
+    ["<leader>1"] = {":lua require('harpoon.ui').nav_file(1)<CR>"},
+    ["<leader>2"] = {":lua require('harpoon.ui').nav_file(2)<CR>"},
+    ["<leader>3"] = {":lua require('harpoon.ui').nav_file(3)<CR>"},
+    ["<leader>4"] = {":lua require('harpoon.ui').nav_file(4)<CR>"},
+    ["<leader>5"] = {":lua require('harpoon.ui').nav_file(5)<CR>"},
+    ["<leader>6"] = {":lua require('harpoon.ui').nav_file(6)<CR>"},
     ["<leader>gg"] = {":LazyGit<CR>"},
     ["<leader>tt"] = {":TagbarToggle<CR>"},
     ["<leader>k"] = {"<cmd>lnext<CR>zz"},
