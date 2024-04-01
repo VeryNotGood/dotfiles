@@ -49,6 +49,7 @@ require("lspconfig").lua_ls.setup {
     Lua = {
       diagnostics = {
         globals = { "vim" },
+                  { "vv" },
       },
       workspace = {
         library = {

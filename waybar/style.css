@@ -1,19 +1,19 @@
 * {
     border: none;
-    border-radius: 0;
-    font-family: "Ubuntu Nerd Font";
+    border-radius: 2px;
+    font-family: "JetBrainsMono Nerd Font";
     font-size: 13px;
     min-height: 0;
 }
 
 window#waybar {
     background: rgba(34,35,46,.95);
-    color: rgba(255,255,255,.75);
+    color: rgba(174,135,118,.75);
 }
 
 #window {
     font-weight: bold;
-    font-family: "Ubuntu Nerd Font";
+    font-family: "JetBrainsMono Nerd Font";
 }
 /*
 #workspaces {
@@ -22,32 +22,40 @@ window#waybar {
 */
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 10px 0px 5px;
     background: transparent;
-    color: white;
+    color: #AD8776;
     border-top: 2px solid transparent;
 }
 
 #workspaces button.focused {
-    color: #c9654a;
-    border-top: 2px solid #c9654a;
+    color: #A56A6C;
+    border-top: 2px solid #AD8776;
+    animation-name: blink;
+    animation-duration: 2.0s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
+    background: rgba(34,35,46,.95);
+    border-bottom: 3px solid #AD8776;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-    padding: 0 3px;
+#clock, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+    padding: 0 4px 0 8px;
     margin: 0 2px;
 }
 
 #clock {
     font-weight: bold;
+    color: #AD8776;
 }
 
 #battery {
+    margin: 0 10px 0 0;
+    color: #AD8776;
 }
 
 #battery icon {
@@ -59,8 +67,8 @@ window#waybar {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: black;
+        color: #1b2028;
+        background: rgba(174,135,118,.75);
     }
 }
 
@@ -74,12 +82,15 @@ window#waybar {
 }
 
 #cpu {
+  color: #AD8776;
 }
 
 #memory {
+  color: #AD8776;
 }
 
 #network {
+  color: #AD8776;
 }
 
 #network.disconnected {
@@ -87,14 +98,18 @@ window#waybar {
 }
 
 #pulseaudio {
+  color: #AD8776;
 }
 
 #pulseaudio.muted {
+  color: #AD8776;
 }
 
 #custom-spotify {
     color: rgb(102, 220, 105);
+    padding: 0px 0px 0px 15px;
 }
 
 #tray {
+  color: #AD8776;
 }

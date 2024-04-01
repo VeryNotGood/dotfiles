@@ -1,6 +1,20 @@
 # Variables
 set $mod Mod4
-set $lock ~/.local/bin/scripts/lock.sh
+set $lock /usr/bin/swaylock \
+          --screenshots \
+        	--clock \
+          --indicator \
+          --indicator-radius 100 \
+          --indicator-thickness 7 \
+          --effect-blur 7x5 \
+          --effect-vignette 0.5:0.5 \
+          --ring-color bb00cc \
+          --key-hl-color 880033 \
+          --line-color 00000000 \
+          --inside-color 00000088 \
+          --separator-color 00000000 \
+          --grace .5 
+          
 set $power ~/.config/rofi/modi/power
 set $wifi ~/.config/rofi/modi/nmcli
 set $term foot
@@ -9,7 +23,7 @@ set $menu rofi -m $(swaymsg -t get_outputs | jq 'map(select(.active) | .focused)
 set $screenshot grim ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 set $screenclip slurp | grim -g - ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 
-set $wallpaper ~/wallpapers/wallpapers/ign_dudeOnBuilding2.png
+set $wallpaper ~/wallpapers/wallpapers/ign_unsplash20.png
 
 exec wal -R
 include ~/.cache/wal/colors-sway
@@ -30,7 +44,7 @@ bar {
 
 # Colors                border   bg       text     indi     childborder
 client.focused          $color3 $color5 $foreground $color11 $color3
-client.focused_inactive $color5 $color5 $foreground $color5 $color5
+client.focused_inactive $color5 $color5 $foreground $color5 $color3
 client.unfocused        $color5 $color5 $foreground $color5 $color5
 client.urgent           $color11 $color5 $foreground $color11 $color11
 
@@ -40,29 +54,29 @@ bindsym $mod+1 workspace "1:web"
 bindsym $mod+2 workspace "2:code"
 bindsym $mod+3 workspace "3:term"
 bindsym $mod+4 workspace "4:reader"
-bindsym $mod+5 workspace "5:music"
-bindsym $mod+6 workspace "6:6"
-bindsym $mod+7 workspace "7:7"
-bindsym $mod+8 workspace "8:8"
-bindsym $mod+9 workspace "9:9"
-bindsym $mod+0 workspace "10:10"    
+bindsym $mod+5 workspace "5:explorer"
+bindsym $mod+6 workspace "6:random"
+bindsym $mod+7 workspace "7:random"
+bindsym $mod+8 workspace "8:random"
+bindsym $mod+9 workspace "9:ncspot"
+bindsym $mod+0 workspace "10:random"    
 
 bindsym $mod+Shift+1 move container to workspace "1:web"
 bindsym $mod+Shift+2 move container to workspace "2:code"
 bindsym $mod+Shift+3 move container to workspace "3:term"
 bindsym $mod+Shift+4 move container to workspace "4:reader"
-bindsym $mod+Shift+5 move container to workspace "5:music"
-bindsym $mod+Shift+6 move container to workspace "6:6"
-bindsym $mod+Shift+7 move container to workspace "7:7"
-bindsym $mod+Shift+8 move container to workspace "8:8"
-bindsym $mod+Shift+9 move container to workspace "9:9"
-bindsym $mod+Shift+0 move container to workspace "10:10"
+bindsym $mod+Shift+5 move container to workspace "5:explorer"
+bindsym $mod+Shift+6 move container to workspace "6:random"
+bindsym $mod+Shift+7 move container to workspace "7:random"
+bindsym $mod+Shift+8 move container to workspace "8:random"
+bindsym $mod+Shift+9 move container to workspace "9:ncspot"
+bindsym $mod+Shift+0 move container to workspace "10:random"
 # Font
 
-font pango:Sans 12
+font pango:JetBrainsMono Nerd Font 12
 
 # Window borders
-default_border pixel 1
+default_border pixel 0
 default_floating_border normal
 hide_edge_borders smart
 
@@ -90,7 +104,8 @@ output * bg $wallpaper fill
 # assign [class="^Mailspring$"] $wsF2
 # assign [app_id="virt-manager"] $wsF8
 # assign [class="^KeePass2$"] $wsF11
-# assign [class="^Spotify$"] $wsF12
+assign [class="^ncspot$"] $ws9
+assign [class="^bluetooth-manager$"] $wsF9
 
 # Shortcuts
 bindsym $mod+Return exec $term
@@ -124,9 +139,6 @@ bindsym $mod+Home exec --no-startup-id pkill -USR1 redshift
 # Idle configuration
 exec swayidle \
     timeout 300 'exec $lock' \
-    timeout 600 'swaymsg "output * dpms off"' \
-    after-resume 'swaymsg "output * dpms on"' \
-    before-sleep 'exec $lock'
 
 # Move your focus around
 bindsym $mod+h focus left
@@ -170,7 +182,18 @@ mode "resize" {
     bindsym h resize shrink width 10px
     bindsym j resize grow height 10px
     bindsym k resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym l resize grow width 10px
+    
+    bindsym shift+h resize shrink width 50px
+    bindsym shift+j resize grow height 50px
+    bindsym shift+k resize shrink height 50px
+    bindsym shift+l resize grow width 50px
+    
+    bindsym control+shift+h resize shrink width 150px
+    bindsym control+shift+j resize grow height 150px
+    bindsym control+shift+k resize shrink height 150px
+    bindsym control+shift+l resize grow width 150px
+
 
     # return to default mode
     bindsym Return mode "default"
@@ -197,8 +220,7 @@ bindsym $mod+Shift+e mode "$mode_system"
 
 exec_always ~/.config/waybar/waybar.sh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-
+exec dbus-update-activation-environment DISPLAY
 
 
 include ~/.config/sway/$(hostname)/*

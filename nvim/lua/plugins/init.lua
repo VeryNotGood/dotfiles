@@ -1,6 +1,9 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definition
 local default_plugins = {
+  { "machakann/vim-highlightedyank",
+    lazy = false,
+  },
   { "ianding1/leetcode.vim",
     lazy = false,
   },
@@ -59,7 +62,6 @@ local default_plugins = {
   { "mattn/emmet-vim",
     lazy = false
   },
-  
  --- { "neoclide/coc.nvim",
  ---   lazy = false
   ---},
@@ -297,6 +299,10 @@ local default_plugins = {
     end,
   },
 
+  {
+    "sharkdp/fd",
+    lazy = false,
+  },
   {
     "nvim-telescope/telescope.nvim",
     lazy = false,
