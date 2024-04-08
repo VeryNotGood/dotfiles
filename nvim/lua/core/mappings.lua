@@ -7,31 +7,65 @@ M.general = {
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
-    ["<C-c>"] = {"<ESC>"},
-
+    ["<C-c>"] = { "<ESC>" },
     -- navigate within insert mode
     ["<C-h>"] = { "<Left>", "Move left" },
     ["<C-l>"] = { "<Right>", "Move right" },
     ["<C-j>"] = { "<Down>", "Move down" },
     ["<C-k>"] = { "<Up>", "Move up" },
+    -- hardmode
+    ["<Up>"] = { "<Nop>" },
+    ["<Down>"] = { "<Nop>" },
+    ["<Left>"] = { "<Nop>" },
+    ["<Right>"] = { "<Nop>" },
   },
 
   n = {
-    ["<leader>0"] = {":Telescope harpoon marks<CR>"},
-    ["<leader>pp"] = {":lua require('harpoon.mark').add_file()<CR>"},
-    ["<leader>."] = {":lua require('harpoon.ui').nav_next()<CR>"},
-    ["<leader>,"] = {":lua require('harpoon.ui').nav_prev()<CR>"},
-    ["<leader>mm"] = {":lua require('harpoon.ui').toggle_quick_menu()<CR>"},
-    ["<leader>1"] = {":lua require('harpoon.ui').nav_file(1)<CR>"},
-    ["<leader>2"] = {":lua require('harpoon.ui').nav_file(2)<CR>"},
-    ["<leader>3"] = {":lua require('harpoon.ui').nav_file(3)<CR>"},
-    ["<leader>4"] = {":lua require('harpoon.ui').nav_file(4)<CR>"},
-    ["<leader>5"] = {":lua require('harpoon.ui').nav_file(5)<CR>"},
-    ["<leader>6"] = {":lua require('harpoon.ui').nav_file(6)<CR>"},
-    ["<leader>gg"] = {":LazyGit<CR>"},
-    ["<leader>tt"] = {":TagbarToggle<CR>"},
-    ["<leader>k"] = {"<cmd>lnext<CR>zz"},
-    ["<leader>j"] = {"<cmd>lprev<CR>zz"},
+    -- avoid repeat misfires
+    ["."] = {"<Nop>"},
+    [".."] = {"."},
+    -- hardmode
+    ["<Up>"] = { "<Nop>" },
+    ["<Down>"] = { "<Nop>" },
+    ["<Left>"] = { "<Nop>" },
+    ["<Right>"] = { "<Nop>" },
+    -- codeium stuff
+    ["<leader>ct"] = { ":Codeium Toggle<CR>" },
+    ["<A-[>"] = { ":Codeium CycleCompletions -1<CR>" },
+    ["<A-]>"] = { ":Codeium CycleCompletions 1<CR>" },
+    ["<A-x>"] = { ":Codeium Clear<CR>" },
+    -- harpoon
+    ["<leader>0"] = { ":Telescope harpoon marks<CR>" },
+    ["<leader>a"] = { ":lua require('harpoon.mark').add_file()<CR>" },
+    [","] = { ":lua require('harpoon.ui').nav_next()<CR>" },
+    ["m"] = { ":lua require('harpoon.ui').nav_prev()<CR>" },
+    ["<leader>m"] = { ":lua require('harpoon.ui').toggle_quick_menu()<CR>" },
+    ["<leader>1"] = { ":lua require('harpoon.ui').nav_file(1)<CR>" },
+    ["<leader>2"] = { ":lua require('harpoon.ui').nav_file(2)<CR>" },
+    ["<leader>3"] = { ":lua require('harpoon.ui').nav_file(3)<CR>" },
+    ["<leader>4"] = { ":lua require('harpoon.ui').nav_file(4)<CR>" },
+    ["<leader>5"] = { ":lua require('harpoon.ui').nav_file(5)<CR>" },
+    ["<leader>6"] = { ":lua require('harpoon.ui').nav_file(6)<CR>" },
+    ["<leader>7"] = { ":lua require('harpoon.ui').nav_file(7)<CR>" },
+    ["<leader>8"] = { ":lua require('harpoon.ui').nav_file(8)<CR>" },
+    ["<leader>9"] = { ":lua require('harpoon.ui').nav_file(9)<CR>" },
+    ["<leader>10"] = { ":lua require('harpoon.ui').nav_file(10)<CR>" },
+    ["<leader>11"] = { ":lua require('harpoon.ui').nav_file(11)<CR>" },
+    ["<leader>12"] = { ":lua require('harpoon.ui').nav_file(12)<CR>" },
+    ["<leader>13"] = { ":lua require('harpoon.ui').nav_file(13)<CR>" },
+    ["<leader>14"] = { ":lua require('harpoon.ui').nav_file(14)<CR>" },
+    ["<leader>15"] = { ":lua require('harpoon.ui').nav_file(15)<CR>" },
+    ["<leader>16"] = { ":lua require('harpoon.ui').nav_file(16)<CR>" },
+    ["<leader>17"] = { ":lua require('harpoon.ui').nav_file(17)<CR>" },
+    ["<leader>18"] = { ":lua require('harpoon.ui').nav_file(18)<CR>" },
+    ["<leader>19"] = { ":lua require('harpoon.ui').nav_file(19)<CR>" },
+    -- Lazygit
+    ["<leader>gg"] = { ":LazyGit<CR>" },
+    -- tagbar
+    ["<leader>tt"] = { ":TagbarToggle<CR>" },
+    ["<leader>k"] = { "<cmd>lnext<CR>zz" },
+    ["<leader>j"] = { "<cmd>lprev<CR>zz" },
+    -- clear highlights
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
@@ -39,14 +73,13 @@ M.general = {
     ["<C-j>"] = { "<C-w>j", "Window down" },
     ["<C-k>"] = { "<C-w>k", "Window up" },
     -- C-d and C-u remain centered on screen
-    ["<C-d>"] = {"<C-d>zz"},
-    ["<C-u>"] = {"<C-u>zz"},
+    ["<C-d>"] = { "<C-d>zz" },
+    ["<C-u>"] = { "<C-u>zz" },
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
-    ["Q"] = {"<nop>"},
-    ["<C-f>"] = {"<cmd> silent !tmux neww tmux-sessionizer<CR>"},
-    ["<leader>s"] = {":%s/"},
-
+    ["Q"] = { "<nop>" },
+    ["<C-f>"] = { "<cmd> silent !tmux neww tmux-sessionizer<CR>" },
+    ["<leader>s"] = { ":%s/" },
 
     -- Copy all
     --["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
@@ -54,15 +87,14 @@ M.general = {
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
-
-    ["J"] = {"mzJ`z"},
-
-    ["n"] = {"nzzzv"},
-    ["N"] = {"Nzzzv"},
-    ["<leader>y"] = {"\"+y"},
-    ["<leader>Y"] = {"\"+y"},
-
-
+    -- Join lines
+    ["J"] = { "mzJ`z" },
+    -- center the cursor
+    ["n"] = { "nzzzv" },
+    ["N"] = { "Nzzzv" },
+    -- don't copy the replaced text after pasting in visual mode
+    ["<leader>y"] = { '"+y' },
+    ["<leader>Y"] = { '"+y' },
 
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -70,13 +102,12 @@ M.general = {
     -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
     ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
+    -- cheatsheet
     ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
-    
+    -- LSP format
     ["<leader>fm"] = {
       function()
         vim.lsp.buf.format { async = true }
@@ -86,23 +117,36 @@ M.general = {
   },
 
   t = {
-    ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+    ["<C-k>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
   },
 
   v = {
+    -- hardmode
+    ["<Up>"] = { "<Nop>" },
+    ["<Down>"] = { "<Nop>" },
+    ["<Left>"] = { "<Nop>" },
+    ["<Right>"] = { "<Nop>" },
+    -- Indents
     ["<"] = { "<gv", "Indent line" },
     [">"] = { ">gv", "Indent line" },
-    ["J"] = {":m '>+1<CR>gv=gv"},
-    ["K"] = {":m '>-2<CR>gv=gv"},
+    -- Move selected line / block of text in visual mode
+    ["J"] = { ":m '>+1<CR>gv=gv" },
+    ["K"] = { ":m '>-2<CR>gv=gv" },
   },
 
   x = {
+    -- hardmode
+    ["<Up>"] = { "<Nop>" },
+    ["<Down>"] = { "<Nop>" },
+    ["<Left>"] = { "<Nop>" },
+    ["<Right>"] = { "<Nop>" },
+    
     ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     -- Don't copy the replaced text after pasting in visual mode
     -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
-    ["<leader>p"] = {[["_dP]]},
+    ["<leader>p"] = { [["_dP]] },
   },
 }
 
@@ -300,7 +344,10 @@ M.nvimtree = {
 
     -- focus
     ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
-  },
+  --   --
+    ["<leader>N"] = { "<cmd> NvimTreeRefresh <CR>", "Refresh nvimtree" },
+    ["<leader>o"] = { "<cmd> NvimTreeCollapse <CR>", "Collapse nvimtree" },
+},
 }
 
 M.telescope = {
@@ -439,6 +486,24 @@ M.blankline = {
   },
 }
 
+-- M.codeium = {
+--   plugin = true,
+--
+--   n = {
+--     ["<leader>ct"] = { ":Codeium Toggle<CR>" },
+--   },
+--
+--   i = {
+--   config = function ()
+--     -- Change '<C-g>' here to any keycode you like.
+--     vim.keymap.set('i', '<C><tab>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+--     vim.keymap.set('i', '<A-]>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+--     vim.keymap.set('i', '<A-[>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+--     vim.keymap.set('i', '<A-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+--   end
+--   }
+-- }
+
 M.gitsigns = {
   plugin = true,
 
@@ -487,7 +552,7 @@ M.gitsigns = {
       "Preview hunk",
     },
 
-    ["<leader>gb"] = {
+    ["<leader>bg"] = {
       function()
         package.loaded.gitsigns.blame_line()
       end,

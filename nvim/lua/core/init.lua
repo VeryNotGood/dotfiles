@@ -31,6 +31,7 @@ opt.mouse = "a"
 opt.number = true
 opt.numberwidth = 2
 opt.ruler = false
+opt.relativenumber = true
 
 -- disable nvim intro
 opt.shortmess:append "sI"
@@ -42,6 +43,8 @@ opt.termguicolors = true
 opt.timeoutlen = 400
 opt.undofile = true
 
+-- Folding
+opt.foldmethod = "indent"
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
 

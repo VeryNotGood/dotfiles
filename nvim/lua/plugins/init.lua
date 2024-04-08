@@ -1,6 +1,13 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definition
 local default_plugins = {
+  {
+    "fcpg/vim-fahrenheit"
+  },
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter"
+  },
   { "machakann/vim-highlightedyank",
     lazy = false,
   },
@@ -8,12 +15,18 @@ local default_plugins = {
     lazy = false,
   },
   { "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim",
+    lazy = false,
+
+    },
+  },
+  {
+    "kdheepak/lazygit.nvim",
     lazy = false,
   },
-  { "kdheepak/lazygit.nvim",
-    lazy = false,
-  },
-  { "MunifTanjim/eslint.nvim",
+  { 
+    "MunifTanjim/eslint.nvim",
     lazy = "false",
   },
   {
@@ -59,16 +72,19 @@ local default_plugins = {
   --{ "f-person/git-blame",
   --  lazy = false
   --},
-  { "mattn/emmet-vim",
+  { 
+    "mattn/emmet-vim",
     lazy = false
   },
  --- { "neoclide/coc.nvim",
  ---   lazy = false
   ---},
-  { "ludovicchabant/vim-gutentags",
+  { 
+    "ludovicchabant/vim-gutentags",
     lazy = false,
   },
-  { "tpope/vim-fugitive",
+  { 
+    "tpope/vim-fugitive",
     lazy = false,
   },
   {

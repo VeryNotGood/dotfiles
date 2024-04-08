@@ -8,8 +8,8 @@ set $lock /usr/bin/swaylock \
           --indicator-thickness 7 \
           --effect-blur 7x5 \
           --effect-vignette 0.5:0.5 \
-          --ring-color bb00cc \
-          --key-hl-color 880033 \
+          --ring-color  ddd9d3 \
+          --key-hl-color A56A6C \
           --line-color 00000000 \
           --inside-color 00000088 \
           --separator-color 00000000 \
@@ -43,12 +43,13 @@ bar {
 
 
 # Colors                border   bg       text     indi     childborder
-client.focused          $color3 $color5 $foreground $color11 $color3
-client.focused_inactive $color5 $color5 $foreground $color5 $color3
-client.unfocused        $color5 $color5 $foreground $color5 $color5
-client.urgent           $color11 $color5 $foreground $color11 $color11
+client.focused          $color2 $color0 $color2 $color2 $color2
+client.focused_inactive $color099 $color095 $foreground $color2 $color3
+client.unfocused        $color099 $color095 $foreground $color2 $color099
+client.urgent           $color11 $color5 $color0 $color11 $color11
 
 # workspaces
+focus_follows_mouse no
 # Switch to workspace
 bindsym $mod+1 workspace "1:web"
 bindsym $mod+2 workspace "2:code"
@@ -73,15 +74,17 @@ bindsym $mod+Shift+9 move container to workspace "9:ncspot"
 bindsym $mod+Shift+0 move container to workspace "10:random"
 # Font
 
-font pango:JetBrainsMono Nerd Font 12
+font pango:0xProto Nerd Font 9 
 
 # Window borders
-default_border pixel 0
+default_border pixel 2
 default_floating_border normal
-hide_edge_borders smart
+
 
 smart_gaps on
 gaps inner 10
+hide_edge_borders smart
+smart_borders on
 
 # Autostart
 exec --no-startup-id mako
@@ -115,7 +118,6 @@ bindsym $mod+d exec $menu
 
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
-#bindsym $mod+Shift+e exit
 bindsym $mod+b splith
 bindsym $mod+v splitv
 
@@ -138,12 +140,13 @@ bindsym $mod+Home exec --no-startup-id pkill -USR1 redshift
 
 # Idle configuration
 exec swayidle \
-    timeout 300 'exec $lock' \
+    timeout 600 'exec $lock' \
 
 # Move your focus around
 bindsym $mod+h focus left
 bindsym $mod+j focus down
-bindsym $mod+k focus up
+bindsym $mod+k focus up$mod+Shift+s
+
 bindsym $mod+l focus right
 
 # _move_ the focused window with the same, but add Shift
@@ -158,6 +161,8 @@ bindsym $mod+Shift+l move right
 # Switch the current container between different layout styles
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
+bindsym $mod+Shift+s sticky toggle
+# tab styling
 bindsym $mod+e layout toggle split
 
 # Make the current focus fullscreen
@@ -170,6 +175,7 @@ bindsym $mod+space focus mode_toggle
 
 # move focus to the parent container
 bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
 
 # Move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad

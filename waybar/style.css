@@ -1,14 +1,14 @@
 * {
     border: none;
     border-radius: 2px;
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "0xProto Nerd Font";
     font-size: 13px;
     min-height: 0;
 }
 
 window#waybar {
-    background: rgba(34,35,46,.95);
-    color: rgba(174,135,118,.75);
+    background: rgba(27,32,40,.85);
+    color: #C7736D; 
 }
 
 #window {
@@ -24,23 +24,24 @@ window#waybar {
 #workspaces button {
     padding: 0 10px 0px 5px;
     background: transparent;
-    color: #AD8776;
+    color: #C7736D;
     border-top: 2px solid transparent;
 }
 
 #workspaces button.focused {
-    color: #A56A6C;
-    border-top: 2px solid #AD8776;
-    animation-name: blink;
+    color: #1b2028;
+    background: #C7736D;
+    /* border-top: 2px solid #C7736D; */
+    /* animation-name: blink; */
     animation-duration: 2.0s;
-    animation-timing-function: ease-in-out;
+    /* animation-timing-function: ease-in-out; */
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
 #mode {
     background: rgba(34,35,46,.95);
-    border-bottom: 3px solid #AD8776;
+    border-bottom: 3px solid #C7736D;
 }
 
 #clock, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
@@ -50,12 +51,12 @@ window#waybar {
 
 #clock {
     font-weight: bold;
-    color: #AD8776;
+    color: #C7736D;
 }
 
 #battery {
     margin: 0 10px 0 0;
-    color: #AD8776;
+    color: #C7736D;
 }
 
 #battery icon {
@@ -68,7 +69,7 @@ window#waybar {
 @keyframes blink {
     to {
         color: #1b2028;
-        background: rgba(174,135,118,.75);
+        background: #C7736D; 
     }
 }
 
@@ -82,15 +83,15 @@ window#waybar {
 }
 
 #cpu {
-  color: #AD8776;
+  color: #C7736D;
 }
 
 #memory {
-  color: #AD8776;
+  color: #C7736D;
 }
 
 #network {
-  color: #AD8776;
+  color: #C7736D;
 }
 
 #network.disconnected {
@@ -98,11 +99,11 @@ window#waybar {
 }
 
 #pulseaudio {
-  color: #AD8776;
+  color: #C7736D;
 }
 
 #pulseaudio.muted {
-  color: #AD8776;
+  color: #C7736D;
 }
 
 #custom-spotify {
@@ -111,5 +112,5 @@ window#waybar {
 }
 
 #tray {
-  color: #AD8776;
+  color: #C7736D;
 }
