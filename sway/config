@@ -23,7 +23,7 @@ set $menu rofi -m $(swaymsg -t get_outputs | jq 'map(select(.active) | .focused)
 set $screenshot grim ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 set $screenclip slurp | grim -g - ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 
-set $wallpaper ~/wallpapers/wallpapers/ign_unsplash20.png
+set $wallpaper ~/aesthetic-wallpapers/images/neon-car2.png
 
 exec wal -R
 include ~/.cache/wal/colors-sway
@@ -145,10 +145,10 @@ exec swayidle \
 # Move your focus around
 bindsym $mod+h focus left
 bindsym $mod+j focus down
-bindsym $mod+k focus up$mod+Shift+s
-
+bindsym $mod+k focus up
 bindsym $mod+l focus right
-
+bindsym $mod+tab focus next
+bindsym ctrl+alt+l focus right
 # _move_ the focused window with the same, but add Shift
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down

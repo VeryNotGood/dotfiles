@@ -21,9 +21,13 @@ M.general = {
   },
 
   n = {
+    ["<leader>ut"] = { ":UndotreeToggle<CR>" },
+    ["G"] = { "Gzz" },
+    -- make unfolding SLIGHTLY faster
+    ["zr"] = { "zR" },
     -- avoid repeat misfires
-    ["."] = {"<Nop>"},
-    [".."] = {"."},
+    ["."] = { "<Nop>" },
+    [".."] = { "." },
     -- hardmode
     ["<Up>"] = { "<Nop>" },
     ["<Down>"] = { "<Nop>" },
@@ -34,31 +38,21 @@ M.general = {
     ["<A-[>"] = { ":Codeium CycleCompletions -1<CR>" },
     ["<A-]>"] = { ":Codeium CycleCompletions 1<CR>" },
     ["<A-x>"] = { ":Codeium Clear<CR>" },
-    -- harpoon
-    ["<leader>0"] = { ":Telescope harpoon marks<CR>" },
-    ["<leader>a"] = { ":lua require('harpoon.mark').add_file()<CR>" },
-    [","] = { ":lua require('harpoon.ui').nav_next()<CR>" },
-    ["m"] = { ":lua require('harpoon.ui').nav_prev()<CR>" },
-    ["<leader>m"] = { ":lua require('harpoon.ui').toggle_quick_menu()<CR>" },
-    ["<leader>1"] = { ":lua require('harpoon.ui').nav_file(1)<CR>" },
-    ["<leader>2"] = { ":lua require('harpoon.ui').nav_file(2)<CR>" },
-    ["<leader>3"] = { ":lua require('harpoon.ui').nav_file(3)<CR>" },
-    ["<leader>4"] = { ":lua require('harpoon.ui').nav_file(4)<CR>" },
-    ["<leader>5"] = { ":lua require('harpoon.ui').nav_file(5)<CR>" },
-    ["<leader>6"] = { ":lua require('harpoon.ui').nav_file(6)<CR>" },
-    ["<leader>7"] = { ":lua require('harpoon.ui').nav_file(7)<CR>" },
-    ["<leader>8"] = { ":lua require('harpoon.ui').nav_file(8)<CR>" },
-    ["<leader>9"] = { ":lua require('harpoon.ui').nav_file(9)<CR>" },
-    ["<leader>10"] = { ":lua require('harpoon.ui').nav_file(10)<CR>" },
-    ["<leader>11"] = { ":lua require('harpoon.ui').nav_file(11)<CR>" },
-    ["<leader>12"] = { ":lua require('harpoon.ui').nav_file(12)<CR>" },
-    ["<leader>13"] = { ":lua require('harpoon.ui').nav_file(13)<CR>" },
-    ["<leader>14"] = { ":lua require('harpoon.ui').nav_file(14)<CR>" },
-    ["<leader>15"] = { ":lua require('harpoon.ui').nav_file(15)<CR>" },
-    ["<leader>16"] = { ":lua require('harpoon.ui').nav_file(16)<CR>" },
-    ["<leader>17"] = { ":lua require('harpoon.ui').nav_file(17)<CR>" },
-    ["<leader>18"] = { ":lua require('harpoon.ui').nav_file(18)<CR>" },
-    ["<leader>19"] = { ":lua require('harpoon.ui').nav_file(19)<CR>" },
+    -- -- harpoon
+    -- ["<leader>0"] = { ":Telescope harpoon marks<CR>" },
+    -- ["<leader>a"] = { ":lua require('harpoon.mark').add_file()<CR>" },
+    -- [","] = { ":lua require('harpoon.ui').nav_next()<CR>" },
+    -- ["<leader>,"] = { ":lua require('harpoon.ui').nav_prev()<CR>" },
+    -- ["<leader>m"] = { ":lua require('harpoon.ui').toggle_quick_menu()<CR>" },
+    -- ["<leader>1"] = { ":lua require('harpoon.ui').nav_file(1)<CR>" },
+    -- ["<leader>2"] = { ":lua require('harpoon.ui').nav_file(2)<CR>" },
+    -- ["<leader>3"] = { ":lua require('harpoon.ui').nav_file(3)<CR>" },
+    -- ["<leader>4"] = { ":lua require('harpoon.ui').nav_file(4)<CR>" },
+    -- ["<leader>5"] = { ":lua require('harpoon.ui').nav_file(5)<CR>" },
+    -- ["<leader>6"] = { ":lua require('harpoon.ui').nav_file(6)<CR>" },
+    -- ["<leader>7"] = { ":lua require('harpoon.ui').nav_file(7)<CR>" },
+    -- ["<leader>8"] = { ":lua require('harpoon.ui').nav_file(8)<CR>" },
+    -- ["<leader>9"] = { ":lua require('harpoon.ui').nav_file(9)<CR>" },
     -- Lazygit
     ["<leader>gg"] = { ":LazyGit<CR>" },
     -- tagbar
@@ -131,7 +125,7 @@ M.general = {
     [">"] = { ">gv", "Indent line" },
     -- Move selected line / block of text in visual mode
     ["J"] = { ":m '>+1<CR>gv=gv" },
-    ["K"] = { ":m '>-2<CR>gv=gv" },
+    ["K"] = { ":m-2<CR>gv=gv" },
   },
 
   x = {
@@ -140,7 +134,7 @@ M.general = {
     ["<Down>"] = { "<Nop>" },
     ["<Left>"] = { "<Nop>" },
     ["<Right>"] = { "<Nop>" },
-    
+
     ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     -- Don't copy the replaced text after pasting in visual mode
@@ -344,10 +338,10 @@ M.nvimtree = {
 
     -- focus
     ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
-  --   --
+    --   --
     ["<leader>N"] = { "<cmd> NvimTreeRefresh <CR>", "Refresh nvimtree" },
     ["<leader>o"] = { "<cmd> NvimTreeCollapse <CR>", "Collapse nvimtree" },
-},
+  },
 }
 
 M.telescope = {

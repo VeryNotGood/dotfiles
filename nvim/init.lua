@@ -20,3 +20,26 @@ dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
 require "plugins"
 require "remap"
+
+local harpoon = require("harpoon")
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<leader>,", function() harpoon:list():prev({ui_nav_wrap = true}) end)
+vim.keymap.set("n", ",", function() harpoon:list():next({ui_nav_wrap = true}) end)
+
+
+require("notify").setup({
+  background_colour = "#000000",
+  render = "compact",
+})

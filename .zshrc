@@ -93,7 +93,8 @@ plugins=(git
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 # else
 #   export EDITOR='mvim'
 # fi

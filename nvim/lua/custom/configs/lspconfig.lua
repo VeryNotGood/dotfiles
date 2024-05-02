@@ -21,11 +21,13 @@ lspconfig.pyright.setup {
       autoImportCompletion = true,
     },
     python = {
+      pythonPath = "/home/sbelmor/.pyenv/shims/python",
       analysis = {
         autoSearchPaths = true,
         diagnosticMode = 'openFilesOnly',
         useLibraryCodeForTypes = true,
-        typeCheckingMode = 'off'
+        typeCheckingMode = 'standard',
+        autoImportCompletions = true,
       }
     }
   }

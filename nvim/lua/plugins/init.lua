@@ -2,30 +2,92 @@
 -- List of all default plugins & their definition
 local default_plugins = {
   {
-    "fcpg/vim-fahrenheit"
+    "catppuccin/nvim", name = "catppuccin", priority = 1000,
   },
   {
-    "Exafunction/codeium.vim",
-    event = "BufEnter"
+    "EdenEast/nightfox.nvim",
   },
-  { "machakann/vim-highlightedyank",
-    lazy = false,
-  },
-  { "ianding1/leetcode.vim",
-    lazy = false,
-  },
-  { "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim",
-    lazy = false,
-
+  {
+    "folke/noice.nvim",
+    event = "BufEnter",
+    opts = {
+      -- add any options here
     },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+      opts = {
+        -- options
+      },
+    },
+  },
+
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    lazy = false,
+  },
+  {
+    "mbbill/undotree",
+    lazy = false,
+  },
+  --   {
+  --   "debugloop/telescope-undo.nvim",
+  --   dependencies = { -- note how they're inverted to above example
+  --     {
+  --       "nvim-telescope/telescope.nvim",
+  --       dependencies = { "nvim-lua/plenary.nvim" },
+  --     },
+  --   },
+  --   keys = {
+  --     { -- lazy style key map
+  --       "<leader>u",
+  --       "<cmd>Telescope undo<cr>",
+  --       desc = "undo history",
+  --     },
+  --   },
+  --   opts = {
+  --     -- don't use `defaults = { }` here, do this in the main telescope spec
+  --     extensions = {
+  --       undo = {
+  --         -- telescope-undo.nvim config, see below
+  --       },
+  --       -- no other extensions here, they can have their own spec too
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     -- Calling telescope's setup from multiple specs does not hurt, it will happily merge the
+  --     -- configs for us. We won't use data, as everything is in it's own namespace (telescope
+  --     -- defaults, as well as each extension).
+  --     require("telescope").setup(opts)
+  --     require("telescope").load_extension("undo")
+  --   end,
+  -- },
+  {
+    "fcpg/vim-fahrenheit",
+  },
+  -- you're not good enough at coding to use AI yet
+  -- {
+  --   "Exafunction/codeium.vim",
+  --   lazy = false,
+  --   event = "BufEnter"
+  -- },
+  { "machakann/vim-highlightedyank", lazy = false },
+  { "ianding1/leetcode.vim", lazy = false },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = false,
   },
   {
     "kdheepak/lazygit.nvim",
     lazy = false,
   },
-  { 
+  {
     "MunifTanjim/eslint.nvim",
     lazy = "false",
   },
@@ -39,51 +101,39 @@ local default_plugins = {
     enabled = true,
     keys = {
       { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-    { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
-    { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+    },
+    config = function(_, opts)
+      local leap = require "leap"
+      for k, v in pairs(opts) do
+        leap.opts[k] = v
+      end
+      leap.add_default_mappings(true)
+      vim.keymap.del({ "x", "o" }, "x")
+      vim.keymap.del({ "x", "o" }, "X")
+    end,
   },
-  config = function(_, opts)
-    local leap = require("leap")
-    for k, v in pairs(opts) do
-      leap.opts[k] = v
-    end
-    leap.add_default_mappings(true)
-    vim.keymap.del({ "x", "o" }, "x")
-    vim.keymap.del({ "x", "o" }, "X")
-  end,
-  },
-  { "tpope/vim-repeat",
-    lazy = false,
-  },
-  { "tpope/vim-surround",
-    lazy = false
-  },
-  { "junegunn/vim-peekaboo",
-    lazy = false
-  },
-  { "romainl/vim-cool",
-    lazy = false
-  },
-  { "wfxr/minimap.vim",
-    lazy = false,
-    "wfxr/code-minimap",
-    lazy = false
-  },
+  { "tpope/vim-repeat", lazy = false },
+  { "tpope/vim-surround", lazy = false },
+  { "junegunn/vim-peekaboo", lazy = false },
+  { "romainl/vim-cool", lazy = false },
+  { "wfxr/minimap.vim", "wfxr/code-minimap", lazy = false },
   --{ "f-person/git-blame",
   --  lazy = false
   --},
-  { 
+  {
     "mattn/emmet-vim",
-    lazy = false
+    lazy = false,
   },
- --- { "neoclide/coc.nvim",
- ---   lazy = false
+  --- { "neoclide/coc.nvim",
+  ---   lazy = false
   ---},
-  { 
+  {
     "ludovicchabant/vim-gutentags",
     lazy = false,
   },
-  { 
+  {
     "tpope/vim-fugitive",
     lazy = false,
   },
@@ -92,11 +142,11 @@ local default_plugins = {
     lazy = false,
   },
   {
-  "nvim-lua/plenary.nvim",
+    "nvim-lua/plenary.nvim",
     lazy = false,
   },
   {
-  "fatih/vim-go",
+    "fatih/vim-go",
     lazy = false,
   },
   {
@@ -142,7 +192,7 @@ local default_plugins = {
 
   {
     "nvim-tree/nvim-web-devicons",
-        lazy = false,
+    lazy = false,
     opts = function()
       return { override = require "nvchad.icons.devicons" }
     end,
@@ -215,9 +265,7 @@ local default_plugins = {
       vim.g.mason_binaries_list = opts.ensure_installed
     end,
   },
-  { "jose-elias-alvarez/null-ls.nvim",
-    lazy = false,
-  },
+  { "jose-elias-alvarez/null-ls.nvim", lazy = false },
 
   {
     "neovim/nvim-lspconfig",
@@ -232,7 +280,6 @@ local default_plugins = {
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
-    lazy = false,
     dependencies = {
       {
         -- snippet plugin
@@ -247,7 +294,7 @@ local default_plugins = {
       -- autopairing of (){}[] etc
       {
         "windwp/nvim-autopairs",
-    lazy = false,
+        lazy = false,
         opts = {
           fast_wrap = {},
           disable_filetype = { "TelescopePrompt", "vim" },
@@ -322,9 +369,7 @@ local default_plugins = {
   {
     "nvim-telescope/telescope.nvim",
     lazy = false,
-    dependencies = { "nvim-treesitter/nvim-treesitter",
-                      "sharkdp/fd",
-    },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "sharkdp/fd" },
     cmd = "Telescope",
     init = function()
       require("core.utils").load_mappings "telescope"
@@ -361,8 +406,6 @@ local default_plugins = {
 }
 
 local config = require("core.utils").load_config()
-
-
 
 if #config.plugins > 0 then
   table.insert(default_plugins, { import = config.plugins })

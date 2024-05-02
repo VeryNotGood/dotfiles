@@ -48,6 +48,8 @@ opt.foldmethod = "indent"
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
 
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
@@ -74,7 +76,7 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd("FileType", {
   pattern = "qf",
   callback = function()
-    vim.opt_local.buflisted = false
+    vim.opt_local.buflisted = true
   end,
 })
 
