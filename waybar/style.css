@@ -7,8 +7,9 @@
 }
 
 window#waybar {
-    background: rgba(27,32,40,.85);
-    color: #B74242; 
+    background: rgba(40,40,40,.95);
+    color: #98971a; 
+    border-bottom: 1px solid;
 }
 
 #window {
@@ -24,13 +25,13 @@ window#waybar {
 #workspaces button {
     padding: 0 10px 0px 5px;
     background: transparent;
-    color: #B74242; 
+    color: #98971a;  
     border-top: 2px solid transparent;
 }
 
 #workspaces button.focused {
     color: #1b2028;
-    background: #B74242; 
+    background: #cc241d; 
     /* border-top: 2px solid #B74242; */
     /* animation-name: blink; */
     animation-duration: 2.0s;
@@ -41,7 +42,7 @@ window#waybar {
 
 #mode {
     background: rgba(34,35,46,.95);
-    border-bottom: 3px solid #B74242;
+    border-bottom: 3px solid #98971a;
 }
 
 #clock, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
@@ -51,12 +52,12 @@ window#waybar {
 
 #clock {
     font-weight: bold;
-    color: #B74242;
+    color: #98971a;
 }
 
 #battery {
     margin: 0 10px 0 0;
-    color: #B74242;
+    color: #98971a;
 }
 
 #battery icon {
@@ -69,7 +70,7 @@ window#waybar {
 @keyframes blink {
     to {
         color: #1b2028;
-        background: #B74242; 
+        background: #98971a; 
     }
 }
 
@@ -83,15 +84,15 @@ window#waybar {
 }
 
 #cpu {
-  color: #B74242;
+  color: #98971a;
 }
 
 #memory {
-  color: #B74242;
+  color: #98971a;
 }
 
 #network {
-  color: #B74242;
+  color: #98971a;
 }
 
 #network.disconnected {
@@ -99,11 +100,11 @@ window#waybar {
 }
 
 #pulseaudio {
-  color: #B74242;
+  color: #98971a;
 }
 
 #pulseaudio.muted {
-  color: #B74242;
+  color: #98971a;
 }
 
 #custom-spotify {
@@ -112,5 +113,5 @@ window#waybar {
 }
 
 #tray {
-  color: #B74242;
+  color: #98971a;
 }

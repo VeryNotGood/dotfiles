@@ -43,3 +43,10 @@ require("notify").setup({
   background_colour = "#000000",
   render = "compact",
 })
+
+require("nvim-tree").setup {
+  live_filter = {
+    prefix = "[FILTER]: ",
+    always_show_folders = false, -- Turn into false from true by default
+  }
+}

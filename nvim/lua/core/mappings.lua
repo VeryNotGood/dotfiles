@@ -21,6 +21,9 @@ M.general = {
   },
 
   n = {
+    -- go stuff
+    ["<leader>js"] = { ":GoTag Add json<CR>" },
+
     ["<leader>ut"] = { ":UndotreeToggle<CR>" },
     ["G"] = { "Gzz" },
     -- make unfolding SLIGHTLY faster
@@ -62,10 +65,10 @@ M.general = {
     -- clear highlights
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
-    ["<C-h>"] = { "<C-w>h", "Window left" },
-    ["<C-l>"] = { "<C-w>l", "Window right" },
-    ["<C-j>"] = { "<C-w>j", "Window down" },
-    ["<C-k>"] = { "<C-w>k", "Window up" },
+    ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "window left" },
+    ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "window right" },
+    ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "window down" },
+    ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
     -- C-d and C-u remain centered on screen
     ["<C-d>"] = { "<C-d>zz" },
     ["<C-u>"] = { "<C-u>zz" },

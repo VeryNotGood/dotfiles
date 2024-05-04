@@ -2,7 +2,13 @@
 -- List of all default plugins & their definition
 local default_plugins = {
   {
-    "catppuccin/nvim", name = "catppuccin", priority = 1000,
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
   },
   {
     "EdenEast/nightfox.nvim",
@@ -76,7 +82,7 @@ local default_plugins = {
   --   event = "BufEnter"
   -- },
   { "machakann/vim-highlightedyank", lazy = false },
-  { "ianding1/leetcode.vim", lazy = false },
+  { "ianding1/leetcode.vim",         lazy = false },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -100,8 +106,8 @@ local default_plugins = {
     lazy = false,
     enabled = true,
     keys = {
-      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
       { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
     },
     config = function(_, opts)
@@ -114,11 +120,11 @@ local default_plugins = {
       vim.keymap.del({ "x", "o" }, "X")
     end,
   },
-  { "tpope/vim-repeat", lazy = false },
-  { "tpope/vim-surround", lazy = false },
+  { "tpope/vim-repeat",      lazy = false },
+  { "tpope/vim-surround",    lazy = false },
   { "junegunn/vim-peekaboo", lazy = false },
-  { "romainl/vim-cool", lazy = false },
-  { "wfxr/minimap.vim", "wfxr/code-minimap", lazy = false },
+  { "romainl/vim-cool",      lazy = false },
+  { "wfxr/minimap.vim",      "wfxr/code-minimap", lazy = false },
   --{ "f-person/git-blame",
   --  lazy = false
   --},
@@ -265,11 +271,32 @@ local default_plugins = {
       vim.g.mason_binaries_list = opts.ensure_installed
     end,
   },
-  { "jose-elias-alvarez/null-ls.nvim", lazy = false },
-
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    lazy = false,
+    ft = "go",
+    opts = function()
+      return require "null-ls"
+    end,
+  },
+  {
+    "olexsmir/gopher.nvim",
+    lazy = false,
+    ft = "go",
+    config = function(_, opts)
+      require("gopher").setup(opts)
+    end,
+    build = function()
+      vim.cmd [[silent! sudo GoInstallDeps]]
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
     event = "User FilePost",
     config = function()
       require "plugins.configs.lspconfig"
@@ -330,12 +357,12 @@ local default_plugins = {
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gcc", mode = "n", desc = "Comment toggle current line" },
-      { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
-      { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
-      { "gbc", mode = "n", desc = "Comment toggle current block" },
-      { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-      { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
+      { "gcc", mode = "n",          desc = "Comment toggle current line" },
+      { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
+      { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
+      { "gbc", mode = "n",          desc = "Comment toggle current block" },
+      { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+      { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
     },
     init = function()
       require("core.utils").load_mappings "comment"
