@@ -25,12 +25,13 @@ M.general = {
     ["<leader>js"] = { ":GoTag Add json<CR>" },
 
     ["<leader>ut"] = { ":UndotreeToggle<CR>" },
+    -- EOF and center
     ["G"] = { "Gzz" },
     -- make unfolding SLIGHTLY faster
     ["zr"] = { "zR" },
     -- avoid repeat misfires
-    ["."] = { "<Nop>" },
-    [".."] = { "." },
+    -- ["."] = { "<Nop>" },
+    -- [".."] = { "." },
     -- hardmode
     ["<Up>"] = { "<Nop>" },
     ["<Down>"] = { "<Nop>" },

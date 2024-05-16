@@ -17,7 +17,9 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
 setopt PROMPT_SUBST
 PROMPT='%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
-
+if [ -d "/usr/local/go/bin" ] ; then
+    PATH="/usr/local/go/bin:$PATH"
+fi
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -121,6 +123,7 @@ export VISUAL='nvim'
  alias gwipe="git reset --hard && git clean -dffx"
  alias gpl="git pull origin"
  alias gps-"git push origin"
+ alias fv="(file=$(fzf); \[ -n "$file" \]; nvim $file)"
 # fuzzy find includes hidden files.
  export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
  
