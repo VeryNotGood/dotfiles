@@ -1,2 +1,30 @@
 [font]
-normal = { family = "0xProto"}
+size = 11.5
+[font.normal]
+family ="0xProto Nerd Font"
+style = "regular"
+
+[window]
+opacity = 0.95
+decorations_theme_variant = "Dark"
+decorations = "None"
+dynamic_padding = true
+[colors.primary]
+background = "#1c2226"
+foreground = "#d3c6aa"
+
+[colors.normal]
+black = "#475258"
+blue = "#7fbbb3"
+cyan = "#83c092"
+green = "#a7c080"
+magenta = "#d699b6"
+red = "#e67e80"
+white = "#d3c6aa"
+yellow = "#dbbc7f"
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true
