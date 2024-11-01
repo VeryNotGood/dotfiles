@@ -2,10 +2,48 @@
 -- List of all default plugins & their definition
 local default_plugins = {
   {
+    "RRethy/vim-illuminate",
+    lazy = false,
+  },
+  {
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    opts = {
+      disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "oil" },
+      disable_mouse = true,
+    },
+  },
+  {
+    "utilyre/barbecue.nvim",
+    lazy = false,
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    opts = {
+      -- configurations go here
+    },
+  },
+  -- {
+  --   'sainnhe/gruvbox-material',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     -- Optionally configure and load the colorscheme
+  --     -- directly inside the plugin declaration.
+  --     vim.g.gruvbox_material_enable_italic = true
+  --     vim.cmd.colorscheme('gruvbox-material')
+  --     vim.g.gruvbox_material_background = 'hard'
+  --     vim.g.gruvbox_better_performance = 1
+  --   end
+  -- },
+  {
     "tpope/vim-dadbod",
     "kristijanhusak/vim-dadbod-completion",
     "kristijanhusak/vim-dadbod-ui",
-    lazy = false
+    lazy = false,
   },
   {
     "christoomey/vim-tmux-navigator",
@@ -15,7 +53,7 @@ local default_plugins = {
     "ellisonleao/gruvbox.nvim",
     name = "gruvbox",
     config = function()
-      require("gruvbox").setup({
+      require("gruvbox").setup {
         terminal_colors = true, -- add neovim terminal colors
         undercurl = true,
         underline = true,
@@ -38,9 +76,9 @@ local default_plugins = {
         overrides = {},
         dim_inactive = false,
         transparent_mode = false,
-      })
-      vim.cmd("colorscheme gruvbox")
-    end
+      }
+      vim.cmd "colorscheme gruvbox"
+    end,
   },
   {
     "EdenEast/nightfox.nvim",
@@ -87,8 +125,7 @@ local default_plugins = {
   --       desc = "undo history",
   --     },
   --   },
-  --   opts = {
-  --     -- don't use `defaults = { }` here, do this in the main telescope spec
+  --   opts = { -- don't use `defaults = { }` here, do this in the main telescope spec
   --     extensions = {
   --       undo = {
   --         -- telescope-undo.nvim config, see below
@@ -128,10 +165,6 @@ local default_plugins = {
   {
     "MunifTanjim/eslint.nvim",
     lazy = "false",
-  },
-  {
-    "mfussenegger/nvim-dap",
-    lazy = false,
   },
   {
     "ggandor/leap.nvim",

@@ -4,7 +4,6 @@ require "nvchad.lsp"
 local M = {}
 local utils = require "core.utils"
 local util = require "lspconfig.util"
-
 -- export on_attach & capabilities for custom lspconfigs
 M.on_attach = function(client, bufnr)
   utils.load_mappings("lspconfig", { buffer = bufnr })
@@ -45,12 +44,11 @@ require("lspconfig").lua_ls.setup {
   on_init = M.on_init,
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-
+--
   settings = {
     Lua = {
       diagnostics = {
         globals = { "vim" },
-                  { "vv" },
       },
       workspace = {
         library = {
@@ -65,8 +63,8 @@ require("lspconfig").lua_ls.setup {
     },
   },
 }
-
-require("lspconfig").gopls.setup {
+--
+require'lspconfig'.gopls.setup {
     on_attach = M.on_attach,
     capabilities = M.capabilities,
     cmd = {"gopls"},
@@ -82,4 +80,24 @@ require("lspconfig").gopls.setup {
     },
   },
 }
+local path_to_elixirls = vim.fn.expand("~/.cache/nvim/lspconfig/elixirls/elixir-ls/release/language_server.sh")
+
+require'lspconfig'.elixirls.setup({
+    on_attach = M.on_attach,
+    capabilities = M.capabilities,
+    cmd = {path_to_elixirls},
+    filetypes = {"ex", "exs", "elixir"},
+    settings = {
+        elixirLS = {
+          -- I choose to disable dialyzer for personal reasons, but
+          -- I would suggest you also disable it unless you are well
+          -- acquainted with dialzyer and know how to use it.
+          dialyzerEnabled = false,
+          -- I also choose to turn off the auto dep fetching feature.
+          -- It often get's into a weird state that requires deleting
+          -- the .elixir_ls directory and restarting your editor.
+          fetchDeps = false
+    }
+  }
+})
 return M

@@ -21,6 +21,7 @@ M.general = {
   },
 
   n = {
+    ["H"] = {"Hzz"},
     -- go stuff
     ["<leader>js"] = { ":GoTag Add json<CR>" },
 

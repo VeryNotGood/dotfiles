@@ -33,6 +33,8 @@ vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
 vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
+vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end)
 
 -- Toggle previous & next buffers stored within Harpoon list
 vim.keymap.set("n", "<leader>,", function() harpoon:list():prev({ui_nav_wrap = true}) end)
@@ -44,9 +46,3 @@ require("notify").setup({
   render = "compact",
 })
 
-require("nvim-tree").setup {
-  live_filter = {
-    prefix = "[FILTER]: ",
-    always_show_folders = false, -- Turn into false from true by default
-  }
-}
